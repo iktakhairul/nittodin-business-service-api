@@ -15,6 +15,13 @@ class CreateAuthorityProfileDocumentsTable extends Migration
     {
         Schema::create('authority_profile_documents', function (Blueprint $table) {
             $table->id();
+            $table->integer('authority_profile_id');
+            $table->string('nid');
+            $table->string('nid_front_image');
+            $table->string('nid_back_image');
+            $table->string('tin');
+            $table->string('tin_image');
+            $table->string('passport_no');
             $table->timestamps();
         });
     }

@@ -32,21 +32,30 @@ class BusinessController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            "group_id"      => 'required',
-            "name"          => 'required',
-            "category_code" => 'required',
+            'user_id'              => 'required',
+            'business_category_id' => 'required',
+            'name'                 => 'required',
+            'business_code'        => 'required'
         ]);
 
         $data = [
-            "group_id"      => $request['group_id'],
-            "name"          => $request['name'],
-            "slug"          => $request['slug'],
-            "icon"          => $request['icon'],
-            "category_code" => $request['category_code'],
-            "serial_no"     => $request['serial_no'],
-            "short_details" => $request['short_details'],
-            "status"        => $request['status'],
-            "created_at"    => Carbon::now(),
+            'user_id'              => $request['user_id'],
+            'business_category_id' => $request['business_category_id'],
+            'name'                 => $request['name'],
+            'slug'                 => $request['slug'],
+            'type'                 => $request['type'],
+            'business_logo'        => $request['business_logo'],
+            'business_code'        => $request['business_code'],
+            'contact_no'           => $request['contact_no'],
+            'email'                => $request['email'],
+            'website'              => $request['website'],
+            'division_id'          => $request['division_id'],
+            'district_id'          => $request['district_id'],
+            'thana_id'             => $request['thana_id'],
+            'address'              => $request['address'],
+            'ranking_score'        => $request['ranking_score'],
+            'status'               => $request['status'],
+            'created_at'           => Carbon::now(),
         ];
 
         $businessId = DB::table('business')->insertGetId($data);
@@ -78,21 +87,30 @@ class BusinessController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, [
-            "group_id"      => 'required',
-            "name"          => 'required',
-            "category_code" => 'required',
+            'user_id'              => 'required',
+            'business_category_id' => 'required',
+            'name'                 => 'required',
+            'business_code'        => 'required'
         ]);
 
-        DB::table('categories')->where('id', $id)->update([
-            "group_id"      => $request['group_id'],
-            "name"          => $request['name'],
-            "slug"          => $request['slug'],
-            "icon"          => $request['icon'],
-            "category_code" => $request['category_code'],
-            "serial_no"     => $request['serial_no'],
-            "short_details" => $request['short_details'],
-            "status"        => $request['status'],
-            "updated_at"    => Carbon::now(),
+        DB::table('business')->where('id', $id)->update([
+            'user_id'              => $request['user_id'],
+            'business_category_id' => $request['business_category_id'],
+            'name'                 => $request['name'],
+            'slug'                 => $request['slug'],
+            'type'                 => $request['type'],
+            'business_logo'        => $request['business_logo'],
+            'business_code'        => $request['business_code'],
+            'contact_no'           => $request['contact_no'],
+            'email'                => $request['email'],
+            'website'              => $request['website'],
+            'division_id'          => $request['division_id'],
+            'district_id'          => $request['district_id'],
+            'thana_id'             => $request['thana_id'],
+            'address'              => $request['address'],
+            'ranking_score'        => $request['ranking_score'],
+            'status'               => $request['status'],
+            'updated_at'           => Carbon::now(),
         ]);
 
         $business = DB::table('business')->where('id', $id)->first();

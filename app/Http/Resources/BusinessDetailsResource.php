@@ -15,17 +15,12 @@ class BusinessDetailsResource extends Resource
     public function toArray($request)
     {
         return [
-            'id'            => $this->id,
-            'group_id'      => $this->group_id,
-            'name'          => $this->name,
-            'slug'          => $this->slug,
-            'icon'          => $this->icon,
-            'category_code' => $this->category_code,
-            'serial_no'     => $this->serial_no,
-            'short_details' => $this->short_details,
-            'status'        => $this->status,
-            'created_at'    => $this->created_at,
-            'updated_at'    => $this->updated_at,
+            'id'           => $this->id,
+            'business_id'  => $this->business_id,
+            'description'  => $this->name,
+            'cover_images' => $this->slug,
+            'created_at'   => $this->created_at,
+            'updated_at'   => $this->updated_at,
         ];
     }
 }

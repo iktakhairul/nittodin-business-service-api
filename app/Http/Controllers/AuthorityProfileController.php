@@ -32,21 +32,23 @@ class AuthorityProfileController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            "group_id"      => 'required',
-            "name"          => 'required',
-            "category_code" => 'required',
+            'business_authority_id' => 'required',
         ]);
 
         $data = [
-            "group_id"      => $request['group_id'],
-            "name"          => $request['name'],
-            "slug"          => $request['slug'],
-            "icon"          => $request['icon'],
-            "category_code" => $request['category_code'],
-            "serial_no"     => $request['serial_no'],
-            "short_details" => $request['short_details'],
-            "status"        => $request['status'],
-            "created_at"    => Carbon::now(),
+            'business_authority_id' => $request['business_authority_id'],
+            'father_name'           => $request['father_name'],
+            'mother_name'           => $request['mother_name'],
+            'gender'                => $request['gender'],
+            'dob'                   => $request['dob'],
+            'religion'              => $request['religion'],
+            'nationality'           => $request['nationality'],
+            'permanent_division_id' => $request['permanent_division_id'],
+            'permanent_district_id' => $request['permanent_district_id'],
+            'permanent_thana_id'    => $request['permanent_thana_id'],
+            'permanent_address'     => $request['permanent_address'],
+            'photo'                 => $request['photo'],
+            'created_at'            => Carbon::now(),
         ];
 
         $authorityProfileId = DB::table('authority_profile')->insertGetId($data);
@@ -78,21 +80,23 @@ class AuthorityProfileController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, [
-            "group_id"      => 'required',
-            "name"          => 'required',
-            "category_code" => 'required',
+            'business_authority_id' => 'required',
         ]);
 
-        DB::table('categories')->where('id', $id)->update([
-            "group_id"      => $request['group_id'],
-            "name"          => $request['name'],
-            "slug"          => $request['slug'],
-            "icon"          => $request['icon'],
-            "category_code" => $request['category_code'],
-            "serial_no"     => $request['serial_no'],
-            "short_details" => $request['short_details'],
-            "status"        => $request['status'],
-            "updated_at"    => Carbon::now(),
+        DB::table('authority_profile')->where('id', $id)->update([
+            'business_authority_id' => $request['business_authority_id'],
+            'father_name'           => $request['father_name'],
+            'mother_name'           => $request['mother_name'],
+            'gender'                => $request['gender'],
+            'dob'                   => $request['dob'],
+            'religion'              => $request['religion'],
+            'nationality'           => $request['nationality'],
+            'permanent_division_id' => $request['permanent_division_id'],
+            'permanent_district_id' => $request['permanent_district_id'],
+            'permanent_thana_id'    => $request['permanent_thana_id'],
+            'permanent_address'     => $request['permanent_address'],
+            'photo'                 => $request['photo'],
+            'updated_at'            => Carbon::now(),
         ]);
 
         $authorityProfile = DB::table('authority_profile')->where('id', $id)->first();

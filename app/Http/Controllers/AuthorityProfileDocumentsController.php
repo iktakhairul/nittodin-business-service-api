@@ -32,21 +32,18 @@ class AuthorityProfileDocumentsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            "group_id"      => 'required',
-            "name"          => 'required',
-            "category_code" => 'required',
+            'authority_profile_id' => 'required',
         ]);
 
         $data = [
-            "group_id"      => $request['group_id'],
-            "name"          => $request['name'],
-            "slug"          => $request['slug'],
-            "icon"          => $request['icon'],
-            "category_code" => $request['category_code'],
-            "serial_no"     => $request['serial_no'],
-            "short_details" => $request['short_details'],
-            "status"        => $request['status'],
-            "created_at"    => Carbon::now(),
+            'authority_profile_id' => $request['authority_profile_id'],
+            'nid'                  => $request['nid'],
+            'nid_front_image'      => $request['nid_front_image'],
+            'nid_back_image'       => $request['nid_back_image'],
+            'tin'                  => $request['tin'],
+            'tin_image'            => $request['tin_image'],
+            'passport_no'          => $request['passport_no'],
+            'created_at'            => Carbon::now(),
         ];
 
         $authorityProfileDocumentsId = DB::table('authority_profile_documents')->insertGetId($data);
@@ -78,21 +75,18 @@ class AuthorityProfileDocumentsController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, [
-            "group_id"      => 'required',
-            "name"          => 'required',
-            "category_code" => 'required',
+            'authority_profile_id' => 'required',
         ]);
 
-        DB::table('categories')->where('id', $id)->update([
-            "group_id"      => $request['group_id'],
-            "name"          => $request['name'],
-            "slug"          => $request['slug'],
-            "icon"          => $request['icon'],
-            "category_code" => $request['category_code'],
-            "serial_no"     => $request['serial_no'],
-            "short_details" => $request['short_details'],
-            "status"        => $request['status'],
-            "updated_at"    => Carbon::now(),
+        DB::table('authority_profile_documents')->where('id', $id)->update([
+            'authority_profile_id' => $request['authority_profile_id'],
+            'nid'                  => $request['nid'],
+            'nid_front_image'      => $request['nid_front_image'],
+            'nid_back_image'       => $request['nid_back_image'],
+            'tin'                  => $request['tin'],
+            'tin_image'            => $request['tin_image'],
+            'passport_no'          => $request['passport_no'],
+            'updated_at'           => Carbon::now(),
         ]);
 
         $authorityProfileDocuments = DB::table('authority_profile_documents')->where('id', $id)->first();

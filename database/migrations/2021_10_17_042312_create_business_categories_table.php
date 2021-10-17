@@ -15,6 +15,13 @@ class CreateBusinessCategoriesTable extends Migration
     {
         Schema::create('business_categories', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('slug');
+            $table->string('business_category_code');
+            $table->string('icon');
+            $table->string('description');
+            $table->string('serial_no');
+            $table->string('status')->default(0);
             $table->timestamps();
         });
     }

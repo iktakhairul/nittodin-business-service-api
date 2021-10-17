@@ -32,21 +32,16 @@ class BusinessPrivateDocumentsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            "group_id"      => 'required',
-            "name"          => 'required',
-            "category_code" => 'required',
+            'business_id'      => 'required',
         ]);
 
         $data = [
-            "group_id"      => $request['group_id'],
-            "name"          => $request['name'],
-            "slug"          => $request['slug'],
-            "icon"          => $request['icon'],
-            "category_code" => $request['category_code'],
-            "serial_no"     => $request['serial_no'],
-            "short_details" => $request['short_details'],
-            "status"        => $request['status'],
-            "created_at"    => Carbon::now(),
+            'business_id'                => $request['business_id'],
+            'document_title'             => $request['document_title'],
+            'document_identification_no' => $request['document_identification_no'],
+            'document_images'            => $request['document_images'],
+            'privacy'                    => $request['privacy'],
+            'created_at'                 => Carbon::now(),
         ];
 
         $businessPrivateDocumentId = DB::table('business_private_documents')->insertGetId($data);
@@ -78,21 +73,16 @@ class BusinessPrivateDocumentsController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, [
-            "group_id"      => 'required',
-            "name"          => 'required',
-            "category_code" => 'required',
+            'business_id' => 'required',
         ]);
 
         DB::table('business_private_documents')->where('id', $id)->update([
-            "group_id"      => $request['group_id'],
-            "name"          => $request['name'],
-            "slug"          => $request['slug'],
-            "icon"          => $request['icon'],
-            "category_code" => $request['category_code'],
-            "serial_no"     => $request['serial_no'],
-            "short_details" => $request['short_details'],
-            "status"        => $request['status'],
-            "updated_at"    => Carbon::now(),
+            'business_id'                => $request['business_id'],
+            'document_title'             => $request['document_title'],
+            'document_identification_no' => $request['document_identification_no'],
+            'document_images'            => $request['document_images'],
+            'privacy'                    => $request['privacy'],
+            'updated_at'                 => Carbon::now(),
         ]);
 
         $businessPrivateDocument = DB::table('business_private_documents')->where('id', $id)->first();

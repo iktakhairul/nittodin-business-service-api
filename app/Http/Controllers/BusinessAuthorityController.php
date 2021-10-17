@@ -18,7 +18,7 @@ class BusinessAuthorityController extends Controller
      */
     public function index(Request $request)
     {
-        $businessAuthorities = DB::table('businessAuthority')->get();
+        $businessAuthorities = DB::table('business_authorities')->get();
 
         return new BusinessAuthorityResourceCollection($businessAuthorities);
     }
@@ -32,25 +32,24 @@ class BusinessAuthorityController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            "group_id"      => 'required',
-            "name"          => 'required',
-            "category_code" => 'required',
+            'user_id'     => 'required',
+            'business_id' => 'required',
+            'name'        => 'required',
         ]);
 
         $data = [
-            "group_id"      => $request['group_id'],
-            "name"          => $request['name'],
-            "slug"          => $request['slug'],
-            "icon"          => $request['icon'],
-            "category_code" => $request['category_code'],
-            "serial_no"     => $request['serial_no'],
-            "short_details" => $request['short_details'],
-            "status"        => $request['status'],
-            "created_at"    => Carbon::now(),
+            'user_id'              => $request['user_id'],
+            'business_id'          => $request['business_id'],
+            'name'                 => $request['name'],
+            'contact_numbers'      => $request['contact_numbers'],
+            'emails'               => $request['emails'],
+            'ownership_percentage' => $request['ownership_percentage'],
+            'status'               => $request['status'],
+            'created_at'           => Carbon::now(),
         ];
 
-        $businessAuthorityId = DB::table('businessAuthority')->insertGetId($data);
-        $businessAuthority = DB::table('businessAuthority')->where('id', $businessAuthorityId)->first();
+        $businessAuthorityId = DB::table('business_authorities')->insertGetId($data);
+        $businessAuthority = DB::table('business_authorities')->where('id', $businessAuthorityId)->first();
 
         return new BusinessAuthorityResource($businessAuthority);
     }
@@ -63,7 +62,7 @@ class BusinessAuthorityController extends Controller
      */
     public function show($id)
     {
-        $businessAuthority = DB::table('businessAuthority')->where('id', $id)->first();
+        $businessAuthority = DB::table('business_authorities')->where('id', $id)->first();
 
         return new BusinessAuthorityResource($businessAuthority);
     }
@@ -78,24 +77,23 @@ class BusinessAuthorityController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, [
-            "group_id"      => 'required',
-            "name"          => 'required',
-            "category_code" => 'required',
+            'user_id'     => 'required',
+            'business_id' => 'required',
+            'name'        => 'required',
         ]);
 
-        DB::table('categories')->where('id', $id)->update([
-            "group_id"      => $request['group_id'],
-            "name"          => $request['name'],
-            "slug"          => $request['slug'],
-            "icon"          => $request['icon'],
-            "category_code" => $request['category_code'],
-            "serial_no"     => $request['serial_no'],
-            "short_details" => $request['short_details'],
-            "status"        => $request['status'],
-            "updated_at"    => Carbon::now(),
+        DB::table('business_authorities')->where('id', $id)->update([
+            'user_id'              => $request['user_id'],
+            'business_id'          => $request['business_id'],
+            'name'                 => $request['name'],
+            'contact_numbers'      => $request['contact_numbers'],
+            'emails'               => $request['emails'],
+            'ownership_percentage' => $request['ownership_percentage'],
+            'status'               => $request['status'],
+            'updated_at'           => Carbon::now(),
         ]);
 
-        $businessAuthority = DB::table('businessAuthority')->where('id', $id)->first();
+        $businessAuthority = DB::table('business_authorities')->where('id', $id)->first();
 
         return new BusinessAuthorityResource($businessAuthority);
     }
@@ -108,7 +106,7 @@ class BusinessAuthorityController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('businessAuthority')->where('id', $id)->delete();
+        DB::table('business_authorities')->where('id', $id)->delete();
 
         return response()->json(null, 204);
     }

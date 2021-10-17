@@ -15,17 +15,17 @@ class AuthorityProfileDocumentsResource extends Resource
     public function toArray($request)
     {
         return [
-            'id'            => $this->id,
-            'group_id'      => $this->group_id,
-            'name'          => $this->name,
-            'slug'          => $this->slug,
-            'icon'          => $this->icon,
-            'category_code' => $this->category_code,
-            'serial_no'     => $this->serial_no,
-            'short_details' => $this->short_details,
-            'status'        => $this->status,
-            'created_at'    => $this->created_at,
-            'updated_at'    => $this->updated_at,
+            'id'                   => $this->id,
+            'authority_profile_id' => $this->authority_profile_id,
+            'nid'                  => $this->nid,
+            'nid_front_image'      => $this->nid_front_image,
+            'nid_back_image'       => $this->nid_back_image,
+            'tin'                  => $this->tin,
+            'tin_image'            => $this->tin_image,
+            'passport_no'          => $this->passport_no,
+            'created_at'           => $this->created_at,
+            'updated_at'           => $this->updated_at,
+
         ];
     }
 }

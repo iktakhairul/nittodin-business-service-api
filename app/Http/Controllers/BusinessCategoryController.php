@@ -32,21 +32,19 @@ class BusinessCategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            "group_id"      => 'required',
-            "name"          => 'required',
-            "category_code" => 'required',
+            "name"                   => 'required',
+            "business_category_code" => 'required',
         ]);
 
         $data = [
-            "group_id"      => $request['group_id'],
-            "name"          => $request['name'],
-            "slug"          => $request['slug'],
-            "icon"          => $request['icon'],
-            "category_code" => $request['category_code'],
-            "serial_no"     => $request['serial_no'],
-            "short_details" => $request['short_details'],
-            "status"        => $request['status'],
-            "created_at"    => Carbon::now(),
+            'name'                   => $request['name'],
+            'slug'                   => $request['slug'],
+            'business_category_code' => $request['business_category_code'],
+            'icon'                   => $request['icon'],
+            'description'            => $request['description'],
+            'serial_no'              => $request['serial_no'],
+            'status'                 => $request['status'],
+            'created_at'             => Carbon::now(),
         ];
 
         $business_categoryId = DB::table('business_categories')->insertGetId($data);
@@ -78,21 +76,19 @@ class BusinessCategoryController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, [
-            "group_id"      => 'required',
-            "name"          => 'required',
-            "category_code" => 'required',
+            "name"                   => 'required',
+            "business_category_code" => 'required',
         ]);
 
-        DB::table('categories')->where('id', $id)->update([
-            "group_id"      => $request['group_id'],
-            "name"          => $request['name'],
-            "slug"          => $request['slug'],
-            "icon"          => $request['icon'],
-            "category_code" => $request['category_code'],
-            "serial_no"     => $request['serial_no'],
-            "short_details" => $request['short_details'],
-            "status"        => $request['status'],
-            "updated_at"    => Carbon::now(),
+        DB::table('business_categories')->where('id', $id)->update([
+            'name'                   => $request['name'],
+            'slug'                   => $request['slug'],
+            'business_category_code' => $request['business_category_code'],
+            'icon'                   => $request['icon'],
+            'description'            => $request['description'],
+            'serial_no'              => $request['serial_no'],
+            'status'                 => $request['status'],
+            'updated_at'             => Carbon::now(),
         ]);
 
         $business_category = DB::table('business_categories')->where('id', $id)->first();

@@ -32,21 +32,18 @@ class BusinessIdenticalDocumentsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            "group_id"      => 'required',
-            "name"          => 'required',
-            "category_code" => 'required',
+            'business_id'      => 'required',
         ]);
 
         $data = [
-            "group_id"      => $request['group_id'],
-            "name"          => $request['name'],
-            "slug"          => $request['slug'],
-            "icon"          => $request['icon'],
-            "category_code" => $request['category_code'],
-            "serial_no"     => $request['serial_no'],
-            "short_details" => $request['short_details'],
-            "status"        => $request['status'],
-            "created_at"    => Carbon::now(),
+            'business_id'         => $request['business_id'],
+            'trade_license_no'    => $request['trade_license_no'],
+            'trade_license_image' => $request['trade_license_image'],
+            'tin'                 => $request['tin'],
+            'tin_image'           => $request['tin_image'],
+            'bin'                 => $request['bin'],
+            'bin_image'           => $request['bin_image'],
+            'created_at'          => Carbon::now(),
         ];
 
         $businessIdenticalDocumentsId = DB::table('business_identical_documents')->insertGetId($data);
@@ -78,21 +75,18 @@ class BusinessIdenticalDocumentsController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, [
-            "group_id"      => 'required',
-            "name"          => 'required',
-            "category_code" => 'required',
+            'business_id' => 'required',
         ]);
 
-        DB::table('categories')->where('id', $id)->update([
-            "group_id"      => $request['group_id'],
-            "name"          => $request['name'],
-            "slug"          => $request['slug'],
-            "icon"          => $request['icon'],
-            "category_code" => $request['category_code'],
-            "serial_no"     => $request['serial_no'],
-            "short_details" => $request['short_details'],
-            "status"        => $request['status'],
-            "updated_at"    => Carbon::now(),
+        DB::table('business_identical_documents')->where('id', $id)->update([
+            'business_id'         => $request['business_id'],
+            'trade_license_no'    => $request['trade_license_no'],
+            'trade_license_image' => $request['trade_license_image'],
+            'tin'                 => $request['tin'],
+            'tin_image'           => $request['tin_image'],
+            'bin'                 => $request['bin'],
+            'bin_image'           => $request['bin_image'],
+            'updated_at'          => Carbon::now(),
         ]);
 
         $businessIdenticalDocument = DB::table('business_identical_documents')->where('id', $id)->first();

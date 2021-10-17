@@ -15,6 +15,11 @@ class CreateBusinessPrivateDocumentsTable extends Migration
     {
         Schema::create('business_private_documents', function (Blueprint $table) {
             $table->id();
+            $table->integer('business_id');
+            $table->string('document_title');
+            $table->string('document_identification_no');
+            $table->string('document_images');
+            $table->string('privacy');
             $table->timestamps();
         });
     }
