@@ -15,11 +15,11 @@ class CreateBusinessPrivateDocumentsTable extends Migration
     {
         Schema::create('business_private_documents', function (Blueprint $table) {
             $table->id();
-            $table->integer('business_id');
-            $table->string('document_title');
-            $table->string('document_identification_no');
-            $table->string('document_images');
-            $table->string('privacy');
+            $table->integer('business_id')->nullable();
+            $table->string('document_title')->nullable();
+            $table->string('document_identification_no')->nullable();
+            $table->string('document_images')->nullable();
+            $table->string('privacy')->nullable();
             $table->timestamps();
         });
     }

@@ -15,13 +15,13 @@ class CreateBusinessAuthoritiesTable extends Migration
     {
         Schema::create('business_authorities', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('business_id');
-            $table->string('name');
-            $table->string('contact_numbers');
-            $table->string('emails');
-            $table->double('ownership_percentage', 5, 2);
-            $table->string('status')->default(0);
+            $table->integer('user_id')->nullable();
+            $table->integer('business_id')->nullable();
+            $table->string('name')->nullable();
+            $table->string('contact_numbers')->nullable();
+            $table->string('emails')->nullable();
+            $table->double('ownership_percentage', 5, 2)->nullable();
+            $table->string('status')->default(0)->nullable();
             $table->timestamps();
         });
     }

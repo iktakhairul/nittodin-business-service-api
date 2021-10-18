@@ -17,8 +17,8 @@ class BusinessDetailsResource extends Resource
         return [
             'id'           => $this->id,
             'business_id'  => $this->business_id,
-            'description'  => $this->name,
-            'cover_images' => $this->slug,
+            'description'  => $this->description,
+            'cover_images' => $this->cover_images,
             'created_at'   => $this->created_at,
             'updated_at'   => $this->updated_at,
         ];

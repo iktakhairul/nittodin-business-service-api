@@ -15,22 +15,22 @@ class CreateBusinessTable extends Migration
     {
         Schema::create('business', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('business_category_id');
-            $table->string('name');
-            $table->string('slug');
-            $table->string('type');
-            $table->string('business_logo');
-            $table->string('business_code');
-            $table->string('contact_no');
-            $table->string('email');
-            $table->string('website');
-            $table->integer('division_id');
-            $table->integer('district_id');
-            $table->integer('thana_id');
-            $table->string('address');
-            $table->double('ranking_score',5,2);
-            $table->string('status')->default(0);
+            $table->integer('user_id')->nullable();
+            $table->integer('business_category_id')->nullable();
+            $table->string('name')->nullable();
+            $table->string('slug')->nullable();
+            $table->string('type')->nullable();
+            $table->string('business_logo')->nullable();
+            $table->string('business_code')->nullable();
+            $table->string('contact_no')->nullable();
+            $table->string('email')->nullable();
+            $table->string('website')->nullable();
+            $table->integer('division_id')->nullable();
+            $table->integer('district_id')->nullable();
+            $table->integer('thana_id')->nullable();
+            $table->string('address')->nullable();
+            $table->double('ranking_score',5,2)->nullable();
+            $table->string('status')->default(0)->nullable();
             $table->timestamps();
         });
     }

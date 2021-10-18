@@ -15,13 +15,13 @@ class CreateBusinessIdenticalDocumentsTable extends Migration
     {
         Schema::create('business_identical_documents', function (Blueprint $table) {
             $table->id();
-            $table->integer('business_id');
-            $table->string('trade_license_no');
-            $table->string('trade_license_image');
-            $table->string('tin');
-            $table->string('tin_image');
-            $table->string('bin');
-            $table->string('bin_image');
+            $table->integer('business_id')->nullable();
+            $table->string('trade_license_no')->nullable();
+            $table->string('trade_license_image')->nullable();
+            $table->string('tin')->nullable();
+            $table->string('tin_image')->nullable();
+            $table->string('bin')->nullable();
+            $table->string('bin_image')->nullable();
             $table->timestamps();
         });
     }
